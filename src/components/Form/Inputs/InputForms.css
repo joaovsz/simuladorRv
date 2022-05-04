@@ -1,0 +1,16 @@
+.input-group{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-width: 80%;
+    margin: auto;
+    }
+
+#next{
+    width:10rem;
+    position: absolute;
+    right: 0;
+    bottom: -2rem;
+}
+
+   
