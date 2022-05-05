@@ -1,51 +1,51 @@
 .input-group{
     display: flex;
     flex-direction:column;
-    max-width: 82%;
+    max-width: 90%;
     position: relative;
-        margin: auto;
-       
+    margin: 0 4rem;
     }
 
 
-    #next{
-        width:8rem;
-        position: absolute;
-        right: 0;
-        bottom: -2rem;
-    }
+.input-group #title{
+    padding: 1rem 0;
+}
 
- #calls{
+.Button{
+    display: flex;
+
+    justify-content:space-between;
+
+    height:20%
+}
+
+footer{
+        color: white;
+        background-color:var(--bg-blue);
+        padding: 1rem; 
+         border-radius:5rem ;
     
+        text-align:left;
+        position: relative;
+           
+    }  
 
-}
- #canceled{
-   
-
-}
-
- #transferred{
-   
-
-}
- #irc{
-    
-    
-}
- #tma{
-   
-
-
-}
- #short{
-    
-   
-
-}
- #resolution{
+footer:hover{
   
+    background-color: #71c3ba;
+    transition: all 2s ease-in-out;
+}    
 
-}
+
+
+
+#next{
+    
+        padding:.6rem;    
+        width:8rem;
+        
+    }
+
 
 
 
