@@ -1,16 +1,53 @@
 .input-group{
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
+    max-width: 82%;
     position: relative;
-    max-width: 80%;
-    margin: auto;
+        margin: auto;
+       
     }
 
-#next{
-    width:10rem;
-    position: absolute;
-    right: 0;
-    bottom: -2rem;
+
+    #next{
+        width:8rem;
+        position: absolute;
+        right: 0;
+        bottom: -2rem;
+    }
+
+ #calls{
+    
+
 }
+ #canceled{
+   
+
+}
+
+ #transferred{
+   
+
+}
+ #irc{
+    
+    
+}
+ #tma{
+   
+
+
+}
+ #short{
+    
+   
+
+}
+ #resolution{
+  
+
+}
+
+
+
 
    

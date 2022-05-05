@@ -66,7 +66,7 @@ export const InputForms = () => {
         onChange={HandleInputResolution}
       />
 
-      <Button
+      {/* <Button
         style={{ borderRadius: 10 }}
         className="button"
         id="next"
@@ -74,7 +74,7 @@ export const InputForms = () => {
        
       >
         Calcular
-      </Button>
+      </Button> */}
     </div>
   );
 };

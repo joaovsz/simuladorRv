@@ -9,8 +9,11 @@ export const Form = () => {
   return (
     <>
     <div id="form">
-      <h2>Simule seus ganhos!</h2>
+      <div className="form-group">
+        <h2>Simule seus ganhos!</h2>
       <InputForms />
+      </div>
+      
     </div>
     </>
    

@@ -1,5 +1,56 @@
 #form{
-    width: 30rem;
+    height: 100%;
+    background-color: white;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    width: 50%;
+    display: flex;
+    margin: auto;
+    align-items: center;
     text-align: center;
+}
+
+#form .form-group{
+    width: 100%;
+}
+
+#form h2{
+    padding-bottom:1rem;
+}
+
+#results{
+    color: white;
+    height: 100%;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background: rgba(0, 0, 0, 0.514);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 3px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+ #description{
+   padding-top:3rem;
+    width:80%;
+    margin: auto;
+}
+
+#dados{
+    padding-top:3rem;
+    margin: auto;
+    width:80%;
+    position: relative;
+    text-align: left;
+}
+
+footer{
+    background-color:var(--bg-violet);
+    padding: 1rem;
+    border-radius: 3rem;
+    text-align:center;
+    position: relative;
+    margin: auto;
+    top:6rem;
+    width:65%;   
 }
 

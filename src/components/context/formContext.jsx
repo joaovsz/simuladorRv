@@ -14,28 +14,51 @@ const [calls, setCalls] = useState(0);
   const [produtivas, setProdutivas] = useState(0);
   const [renda, setRenda] = useState(0);
   const [faixa, setFaixa] = useState(0);
+  const [deflateIRC, setDeflateIRC] = useState(0);
 
   function HandleInputCalls (event) {
-    setCalls(event.target.value);
+    let valueInput = event.target.value
+    setCalls(valueInput);
   };
   function HandleInputCancel(event){
-    setCancel(event.target.value)
-   if(canceled<=15.4){
+    let valueInput = event.target.value;
+    let canceladas = Math.round((calls*valueInput)/100)
+    setCancel(canceladas)
+
+   if(valueInput >=0 && valueInput<=15.4){
      setFaixa(1.5)
-     console.log(faixa)
-   }else if(canceled>15.4 && canceled <= 17.6){
-     setFaixa(0.94)
-   }else if(canceled>17.6 && canceled <= 19.8){
+    }else if(valueInput>15.4 && valueInput <= 17.6){
+      setFaixa(0.94)
+      
+    
+   }else if(valueInput>17.6 && valueInput <= 19.8){
     setFaixa(0.75)
-  }else if(canceled>19.8 && canceled <= 25.85){
+   
+  }else if(valueInput>19.8 && valueInput <= 25.85){
     setFaixa(0.56)
+    
+  }else{
+    return console.log("TAXA MUITO ALTA")
   }
+
   };
+
   function HandleInputTransferred(event) {
-    setTransferred(event.target.value);
+    let valueInput = event.target.value
+    let transferidas = Math.round((calls*valueInput)/100)
+    setTransferred(transferidas);
   };
   function HandleInputIRC (event) {
-    setIrc(event.target.value);
+    let valueInput= event.target.value
+    let irc = Math.round((calls*valueInput)/100)
+    setIrc(irc);
+    if(valueInput >=15.95 && valueInput <17.05){
+      setDeflateIRC(0.2)
+    }else if(valueInput>=17.5 && valueInput<=18.15){
+      setDeflateIRC(0.5)
+    }else if(valueInput>=18.15){
+      setDeflateIRC(0.9)
+    }
   };
   function HandleInputTMA (event) {
     setTma(event.target.value);
@@ -51,24 +74,21 @@ const [calls, setCalls] = useState(0);
   
   useEffect(()=> {
     function ProdutivasReais () {
-      let canceladas = Math.round((calls*canceled)/100)
-      let transferidas = Math.round((calls*transferred)/100)
-      let rechamadas = Math.round((calls*irc)/100)
-      let retiradas = Math.round((calls - canceladas - transferidas - rechamadas - shortCall))
+      let retiradas = Math.round((calls - canceled - transferred - irc - shortCall))
       let produtivasReais =Math.round(( retiradas * resolution) /100)
+      let rendimento = Math.round(produtivasReais*faixa)
       setProdutivas(produtivasReais)
-      setRenda(produtivasReais*faixa)
+      setRenda(rendimento)
     }
-
     ProdutivasReais() 
-  }, [calls, canceled, transferred, irc, tma, shortCall, resolution ])
+  }, [resolution ])
   
   
     
 
    return (
 
-    <DataContext.Provider value={{ produtivas, renda, HandleInputResolution, HandleInputShortCall, HandleInputIRC, HandleInputTMA, HandleInputTransferred, HandleInputCancel, HandleInputCalls}}>
+    <DataContext.Provider value={{ produtivas, renda,canceled, irc, transferred, faixa, HandleInputResolution, HandleInputShortCall, HandleInputIRC, HandleInputTMA, HandleInputTransferred, HandleInputCancel, HandleInputCalls}}>
     {props.children}
 </DataContext.Provider>
    )
