@@ -15,7 +15,8 @@ const {faixa, renda, produtivas, irc, transferred, canceled, deflateIRC} = useCo
 
   return (
     <div id='results'>
-      <section id="description">
+      <div className="results-group">
+        <section id="description">
         <h1>Como foi feito o cáculo?</h1>
         <p>O cálculo da renda váriavel é feita a partir da multiplicação das suas chamadas produtivas reais pela porcentagem(%) de cancelamento, sendo considerando 4 tipos de multiplicadores que vão de acordo com a taxa</p>
       </section>
@@ -28,6 +29,8 @@ const {faixa, renda, produtivas, irc, transferred, canceled, deflateIRC} = useCo
       <h3> Contratos cancelados: {canceled}<RemoveCircleOutlineIcon/> </h3>
      <h3> Deflação: {deflateIRC<0.2? "Você não possui deflatores": `${deflateIRC*100}%`} <MoneyOffIcon/></h3>
       </section>
+      </div>
+      
      
     </div>
   )

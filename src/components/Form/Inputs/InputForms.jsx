@@ -24,6 +24,7 @@ export const InputForms = () => {
     <>
     <ThemeProvider theme={theme}>
     <div className="input-group">
+    <h2>Simule seus ganhos!</h2>
     <h4 id="title">Informe abaixo os dados fornecidos pelo seu supervisor!</h4>
       <TextField
         size="small"

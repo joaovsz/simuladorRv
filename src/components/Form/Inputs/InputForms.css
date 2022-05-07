@@ -2,13 +2,15 @@
     display: flex;
     flex-direction:column;
     max-width: 90%;
-    position: relative;
-    margin: 0 4rem;
+    margin: 0 2rem;
+    height:90%;
+    justify-content:center;
     }
 
 
 .input-group #title{
-    padding: 1rem 0;
+    padding: 0 0 1rem 0;
+    color:rgba(0, 0, 0, 0.507);
 }
 
 .Button{
@@ -23,8 +25,10 @@ footer{
         color: white;
         background-color:var(--bg-blue);
         padding: 1rem; 
-         border-radius:5rem ;
-    
+        display: flex;
+        align-items:center;
+         border-radius:3rem ;
+        height:3rem;
         text-align:left;
         position: relative;
            
@@ -40,7 +44,7 @@ footer:hover{
 
 
 #next{
-    
+        height:3rem;
         padding:.6rem;    
         width:8rem;
         

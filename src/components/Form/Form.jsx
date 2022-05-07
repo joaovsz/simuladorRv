@@ -10,7 +10,7 @@ export const Form = () => {
     <>
     <div id="form">
       <div className="form-group">
-        <h2>Simule seus ganhos!</h2>
+        
       <InputForms />
       </div>
       
