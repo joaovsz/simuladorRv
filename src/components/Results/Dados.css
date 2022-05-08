@@ -2,11 +2,16 @@
     width:50%;
     margin: auto;
 }
- h3{
+.table-results{
     display: flex;
     align-items: center;
     padding: .1rem 0;
     justify-content: space-between;
+}
+
+span{
+    width:11.5rem;
+    font-weight:100;
 }
 
 
@@ -47,4 +52,25 @@
     text-align: left;
 }
 
+@media(max-width:768px){
+    #description{
+        height:auto;
+        padding-top:1rem;
+    }
+    #dados{
+        padding-top:2rem;
+    }
+    #results{
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 1rem;
+        width:100%;
+        margin: auto;
+        height:100%;
+    }
 
+    #results .results-group{
+        height:100%;
+        padding-bottom: 1rem;
+    }
+}

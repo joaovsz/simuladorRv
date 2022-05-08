@@ -15,19 +15,19 @@
 
 .Button{
     display: flex;
-
+    align-items: center;
     justify-content:space-between;
 
     height:20%
 }
 
 footer{
-        color: white;
-        background-color:var(--bg-blue);
+        color:var(--bg-violet);
+        background:rgb(236, 236, 236);
         padding: 1rem; 
         display: flex;
         align-items:center;
-         border-radius:3rem ;
+        border-radius: 1rem;
         height:3rem;
         text-align:left;
         position: relative;
@@ -35,8 +35,8 @@ footer{
     }  
 
 footer:hover{
-  
-    background-color: #71c3ba;
+    
+    background-color: #d8dddc;
     transition: all 2s ease-in-out;
 }    
 
@@ -50,7 +50,29 @@ footer:hover{
         
     }
 
-
+@media(max-width:768px){
+    #next{
+        height:2rem;
+        padding:.6rem;    
+        width:7rem;
+        margin-bottom: .5rem;
+    }
+    .Button{
+        align-items: center;
+        
+        flex-direction:column;
+    }
+    footer{
+        
+        padding: 1rem; 
+        align-items:center;
+         border-radius:2rem ;
+        height:2rem;
+        text-align:left;
+        position: relative;
+           
+    } 
+}
 
 
 

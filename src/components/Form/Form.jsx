@@ -10,7 +10,6 @@ export const Form = () => {
     <>
     <div id="form">
       <div className="form-group">
-        
       <InputForms />
       </div>
       

@@ -10,6 +10,9 @@ body{
     radial-gradient(at 0% 0%, rgb(29, 42, 219) 0px, transparent 50%);
     height: 100vh;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 *, body, html{
     font-family: Poppins, sans-serif;
@@ -20,15 +23,11 @@ body{
     --bg-blue: #3CAEA1;
 }
 
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 main{
     border-radius: 35px;
     display: flex;
-    max-width:70vw;
+    max-width:85vw;
    border-radius: 1rem;
     align-items: center;
     justify-content: space-around;
@@ -36,6 +35,23 @@ main{
     margin:auto;
 }
 
+@media(max-width:768px){
+    body{
+        background-repeat: no-repeat;
+        font-size:85%;
+        height:100%;
+        width:100%;
+        overflow: scroll;
+    }
+    main{
+        margin: 2rem auto;
+        width:100vw;
+        height:100%;
+        justify-content:flex-start;
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 
 
