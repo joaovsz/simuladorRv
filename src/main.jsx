@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import {TableProvider}  from "./components/context/formContext";
+import {TableProvider}  from "./components/context/form-context";
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

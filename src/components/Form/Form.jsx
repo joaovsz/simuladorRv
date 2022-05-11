@@ -1,5 +1,5 @@
 import React from 'react'
-import { InputForms } from './Inputs/inputForms'
+import { InputForms } from './Inputs/Input-forms'
 import "./Form.css"
 
 

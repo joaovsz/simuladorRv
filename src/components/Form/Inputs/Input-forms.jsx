@@ -4,8 +4,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import  Select  from "@mui/material/Select";
-import "./InputForms.css";
-import { DataContext } from "../../context/formContext";
+import "./Input-forms.css";
+import { DataContext } from "../../context/form-context";
 
 export const InputForms = () => {
   const {
