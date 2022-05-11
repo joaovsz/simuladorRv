@@ -1,4 +1,5 @@
 .input-group{
+    animation:fade-in 0.5s ease-in;
     display: flex;
     flex-direction:column;
     max-width: 90%;
@@ -40,8 +41,23 @@ footer:hover{
     transition: all 2s ease-in-out;
 }    
 
+.home-select {
+    position: relative;
+      animation: fade-in 0.5s ease-in-out ;
+}
 
 
+
+@keyframes fade-in {
+    0%{
+        opacity: 0%;
+        
+    }
+    100%{
+        opacity:100%;
+        
+    }
+}
 
 #next{
         height:3rem;
