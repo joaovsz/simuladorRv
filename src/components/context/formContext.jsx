@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect } from "react";
 
 export const DataContext = createContext();
 
@@ -17,72 +17,98 @@ export function TableProvider(props) {
   const [deflateIRC, setDeflateIRC] = useState(0);
   const [deflateTMA, setDeflateTMA] = useState(0);
   const [term, setTerm] = useState(0);
+  const [popOver, setPopOver] = useState(false);
+
+function openForm(){
+  term==0?alert("Selecione o termo"):setPopOver(true),setTerm(term)
+ ;
+}
+
+  function resetTerm(){
+    setCalls(0)
+    setCancel(0)
+    setTransferred(0)
+    setIrc(0)
+    setRenda(0)
+    setTma(0)
+    setShortCall(0)
+    setResolution(0)
+    setProdutivas(0)
+    setFaixa(0)
+    setPopOver(!popOver)
+    setTerm(null);
+  }
 
   function selectTerms(event) {
-    console.log(term);
+   
     setTerm(event.target.value);
+    
+    
   }
+
+
   const termos = [
     {
       name: "OiTv Novato",
       taxa: {
-        faixa1:15.4,
-        faixa2:17.6,
-        faixa3:19.8,
-        faixa4:25.85
+        Q1:15.4,
+        Q2:18.15,
+        Q3:20.9,
+        Q4:23.65
       },
       multiplicadores: {
-        faixa1: 1.5,
-        faixa2: 0.94,
-        faixa3: 0.75,
-        faixa4: 0.56,
+        Q1: 1.5,
+        Q2: 0.94,
+        Q3: 0.75,
+        Q4: 0.56,
       },
       taxaIRC:{
-        faixa1:15.95,
-        faixa2:17.5,
-        faixa3:18.5,
+        Q1:13.75,
+        Q2:14.85,
+        Q3:15.95,
       },
       irc:{
-        faixa1:0.2,
-        faixa1:0.5,
-        faixa1:0.9,
+        Q1:0.2,
+        Q2:0.5,
+        Q3:0.9,
       },
       tma:{
-        faixa1:650
+        Q1:650
       }
     },
     {
       name: "OiTv Veterano",
 
       taxa: {
-        faixa1:14.4,
-        faixa2:16.6,
-        faixa3:18.8,
-        faixa4:23.85
+        Q1:14,
+        Q2:16.5,
+        Q3:19,
+        Q4:21.5
       },
 
       multiplicadores: {
-        faixa1: 2,
-        faixa2: 1.5,
-        faixa3: 0.95,
-        faixa4: 0.74,
+        Q1: 2,
+        Q2: 1.25,
+        Q3: 1,
+        Q4: 0.75,
       },
 
       taxaIRC:{
-        faixa1:13.5,
-        faixa2:15.8,
-        faixa3:17.9,
+        Q1:12.5,
+        Q2:13.5,
+        Q3:14.5,
       },
       irc:{
-        faixa1:0.2,
-        faixa2:0.5,
-        faixa3:0.9,
+        Q1:0.2,
+        Q2:0.5,
+        Q3:0.9,
       },
       tma:{
-        faixa1:620
+        Q1:620
       }
     },
   ];
+
   function Calcular() {
     if (
       calls == 0 ||
@@ -108,16 +134,55 @@ export function TableProvider(props) {
     let canceladas = Math.round((calls * valueInput) / 100);
     setCancel(canceladas);
 
-    if (valueInput >= 0 && valueInput <= 15.4) {
-      setFaixa(1.5);
-    } else if (valueInput > 15.4 && valueInput <= 17.6) {
-      setFaixa(0.94);
-    } else if (valueInput > 17.6 && valueInput <= 19.8) {
-      setFaixa(0.75);
-    } else if (valueInput > 19.8 && valueInput <= 25.85) {
-      setFaixa(0.56);
-    } else {
-      return console.log("TAXA MUITO ALTA");
+    switch (term) {
+      case 1:
+        if (valueInput > 0 && valueInput <= termos[0].taxa.Q1) {
+          setFaixa(termos[0].multiplicadores.Q1);
+        } else if (
+          valueInput > termos[0].taxa.Q1 &&
+          valueInput <= termos[0].taxa.Q2
+        ) {
+          setFaixa(termos[0].multiplicadores.Q2);
+        } else if (
+          valueInput > termos[0].taxa.Q2 &&
+          valueInput <= termos[0].taxa.Q3
+        ) {
+          setFaixa(termos[0].multiplicadores.Q3);
+        } else if (
+          valueInput > termos[0].taxa.Q3 &&
+          valueInput <= termos[0].taxa.Q4
+        ) {
+          setFaixa(termos[0].multiplicadores.Q4);
+        }else{
+          setFaixa(0)
+        }
+        break;
+      case 2:
+        if (valueInput > 0 && valueInput <= termos[1].taxa.Q1) {
+          setFaixa(termos[1].multiplicadores.Q1);
+        } else if (
+          valueInput > termos[1].taxa.Q1 &&
+          valueInput <= termos[1].taxa.Q2
+        ) {
+          setFaixa(termos[1].multiplicadores.Q2);
+        } else if (
+          valueInput > termos[1].taxa.Q2 &&
+          valueInput <= termos[1].taxa.Q3
+        ) {
+          setFaixa(termos[1].multiplicadores.Q3);
+        } else if (
+          valueInput > termos[1].taxa.Q3 &&
+          valueInput <= termos[1].taxa.Q4
+        ) {
+          setFaixa(termos[1].multiplicadores.Q4);
+        }else{
+          setFaixa(0)
+        }
+        break;
+
+      default:
+        alert("Selecione primeiro o termo de pactuação");
+        break;
     }
   }
 
@@ -130,15 +195,23 @@ export function TableProvider(props) {
     let valueInput = event.target.value;
     let irc = Math.round((calls * valueInput) / 100);
     setIrc(irc);
-    if (valueInput >= 15.95 && valueInput < 17.5) {
-      setDeflateIRC(0.2);
-    } else if (valueInput >= 17.5 && valueInput <= 18.15) {
-      setDeflateIRC(0.5);
-    } else if (valueInput >= 18.15) {
-      setDeflateIRC(0.9);
+    switch (term) {
+      case 1:
+        if (valueInput >= termos[0].taxaIRC.Q1 && valueInput < termos[0].taxaIRC.Q2) {
+      setDeflateIRC(termos[0].irc.Q1);
+    } else if (valueInput >= termos[0].taxaIRC.Q2 && valueInput < termos[0].taxaIRC.Q3) {
+      setDeflateIRC(termos[0].irc.Q2);
+    } else if (valueInput >= termos[0].taxaIRC.Q3) {
+      setDeflateIRC(termos[0].irc.Q3);
     } else {
       setDeflateIRC(0);
     }
+        break;
+    
+      default:
+        break;
+    }
+    
   }
   function HandleInputTMA(event) {
     let value = Math.round(event.target.value);
@@ -172,8 +245,10 @@ export function TableProvider(props) {
         setRenda(rendimento);
       }
     }
+   
     ProdutivasReais();
   }, [toggle]);
+
 
   return (
     <DataContext.Provider
@@ -187,6 +262,9 @@ export function TableProvider(props) {
         deflateIRC,
         deflateTMA,
         term,
+        popOver,
+        openForm,
+        resetTerm,
         Calcular,
         HandleInputResolution,
         HandleInputShortCall,
