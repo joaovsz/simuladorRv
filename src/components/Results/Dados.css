@@ -1,8 +1,6 @@
-#results{
-    width:50%;
-    margin: auto;
-}
+
 .table-results{
+    animation: fade-in 1.5s ease-in-out;
     display: flex;
     align-items: center;
     padding: .1rem 0;
@@ -14,9 +12,21 @@ span{
     font-weight:100;
 }
 
-
+@keyframes fade-in {
+    0%{
+        opacity: 0%;
+        
+    }
+    100%{
+        opacity:100%;
+        
+    }
+}
 
 #results{
+    width:50%;
+    margin: auto;
+    
     color: white;
     height: 100%;
     display: flex;
@@ -39,6 +49,7 @@ span{
 }
 
  #description{
+    animation: fade-in 0.6s ease-in-out;
    padding-top:4.5rem;
     width:80%;
     margin: 0 auto;
