@@ -215,11 +215,11 @@ export function TableProvider(props) {
     let value = Math.round(event.target.value);
     setTma(value);
     if(term == 1 ){
-      value >= 650 ? setDeflateTMA(termos[1].deflateTMA) : setDeflateTMA(0);
+      value >= 650 ? setDeflateTMA(30) : setDeflateTMA(0);
     }else if(term == 2){
-      value >= 620 ? setDeflateTMA(0.3*100) : setDeflateTMA(0);
+      value >= 620 ? setDeflateTMA(30) : setDeflateTMA(0);
     }else{
-      value >= 650 ? setDeflateTMA(0.3*100) : setDeflateTMA(0);
+      value >= 650 ? setDeflateTMA(30) : setDeflateTMA(0);
 
     }
     console.log(value)
@@ -239,7 +239,7 @@ export function TableProvider(props) {
       let produtivasReais = Math.round((retiradas * resolution) / 100);
       let rendimento = Math.round(produtivasReais * faixa);
       let deflatorIRC = deflateIRC * rendimento;
-      let deflatorTMA = deflateTMA * rendimento;
+      let deflatorTMA = ((deflateTMA * rendimento)/100);
       setProdutivas(produtivasReais);
 
       if (deflateIRC > 0 && deflateTMA > 0) {
