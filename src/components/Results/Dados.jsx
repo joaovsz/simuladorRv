@@ -78,18 +78,21 @@ export const Dados = () => {
               
             Deflação:
               </span>
-            { ((deflateIRC+deflateTMA)*100)>100?" Ta devendo pra empresa já em lllkkkk":
+            { ((deflateIRC*100)+(deflateTMA))>100?" Ta devendo pra empresa já em lllkkkk":
               deflateIRC < 0.2 && deflateTMA < 0.3
               ? " 0%"
               : deflateIRC > 0 && deflateTMA > 0
-              ? ` ${(deflateIRC + deflateTMA) * 100}% (IRC e TMA)`
+              ? ` ${((deflateIRC*100) + deflateTMA)}% (IRC e TMA)`
               : deflateIRC > 0 && deflateTMA < 0.3
-              ? ` ${deflateIRC * 100}%(IRC)`
-              : ` ${deflateTMA * 100}% (TMA)`}
+              ? ` ${deflateIRC*100}%(IRC)`
+              : ` ${deflateTMA}% (TMA)`}
             <MoneyOffIcon />
           </div>
         </section>
       </div>
+        <div className="developedBy">
+          <p>Desenvolvido por <a href="https://instagram.com/joao.vsz" target="_blank"> @joaovsz</a></p>
+        </div>
     </div>
   );
 };
