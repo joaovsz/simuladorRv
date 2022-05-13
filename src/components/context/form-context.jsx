@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
-
-export const DataContext = createContext();
+import {termos} from "../database/termos"
+ export const DataContext = createContext();
 
 export function TableProvider(props) {
   const [toggle, setToggle] = useState(false);
@@ -19,95 +19,30 @@ export function TableProvider(props) {
   const [term, setTerm] = useState(0);
   const [popOver, setPopOver] = useState(false);
 
-function openForm(){
-  term==0?alert("Selecione o termo"):setPopOver(true),setTerm(term)
- ;
-}
+  function openForm() {
+    term == 0 ? alert("Selecione o termo") : setPopOver(true), setTerm(term);
+  }
 
-  function resetTerm(){
-    setCalls(0)
-    setCancel(0)
-    setTransferred(0)
-    setIrc(0)
-    setRenda(0)
-    setTma(0)
-    setShortCall(0)
-    setResolution(0)
-    setProdutivas(0)
-    setFaixa(0)
-    setPopOver(!popOver)
+  function resetTerm() {
+    setCalls(0);
+    setCancel(0);
+    setTransferred(0);
+    setIrc(0);
+    setRenda(0);
+    setTma(0);
+    setShortCall(0);
+    setResolution(0);
+    setProdutivas(0);
+    setFaixa(0);
+    setPopOver(!popOver);
     setTerm(null);
   }
 
   function selectTerms(event) {
-   
     setTerm(event.target.value);
-    
-    
   }
 
-
-  const termos = [
-    {
-      name: "OiTv Novato",
-      taxa: {
-        Q1:15.4,
-        Q2:18.15,
-        Q3:20.9,
-        Q4:23.65
-      },
-      multiplicadores: {
-        Q1: 1.5,
-        Q2: 0.94,
-        Q3: 0.75,
-        Q4: 0.56,
-      },
-      taxaIRC:{
-        Q1:13.75,
-        Q2:14.85,
-        Q3:15.95,
-      },
-      irc:{
-        Q1:0.2,
-        Q2:0.5,
-        Q3:0.9,
-      },
-      tma:{
-        Q1:650
-      }
-    },
-    {
-      name: "OiTv Veterano",
-
-      taxa: {
-        Q1:14,
-        Q2:16.5,
-        Q3:19,
-        Q4:21.5
-      },
-
-      multiplicadores: {
-        Q1: 2,
-        Q2: 1.25,
-        Q3: 1,
-        Q4: 0.75,
-      },
-
-      taxaIRC:{
-        Q1:12.5,
-        Q2:13.5,
-        Q3:14.5,
-      },
-      irc:{
-        Q1:0.2,
-        Q2:0.5,
-        Q3:0.9,
-      },
-      tma:{
-        Q1:620
-      }
-    },
-  ];
+  
 
   function Calcular() {
     if (
@@ -129,6 +64,7 @@ function openForm(){
     let valueInput = Math.round(event.target.value);
     setCalls(valueInput);
   }
+
   function HandleInputCancel(event) {
     let valueInput = event.target.value;
     let canceladas = Math.round((calls * valueInput) / 100);
@@ -153,8 +89,8 @@ function openForm(){
           valueInput <= termos[0].taxa.Q4
         ) {
           setFaixa(termos[0].multiplicadores.Q4);
-        }else{
-          setFaixa(0)
+        } else {
+          setFaixa(0);
         }
         break;
       case 2:
@@ -175,8 +111,30 @@ function openForm(){
           valueInput <= termos[1].taxa.Q4
         ) {
           setFaixa(termos[1].multiplicadores.Q4);
-        }else{
-          setFaixa(0)
+        } else {
+          setFaixa(0);
+        }
+        break;
+      case 3:
+        if (valueInput > 0 && valueInput <= termos[2].taxa.Q1) {
+          setFaixa(termos[2].multiplicadores.Q1);
+        } else if (
+          valueInput > termos[2].taxa.Q1 &&
+          valueInput <= termos[2].taxa.Q2
+        ) {
+          setFaixa(termos[2].multiplicadores.Q2);
+        } else if (
+          valueInput > termos[2].taxa.Q2 &&
+          valueInput <= termos[2].taxa.Q3
+        ) {
+          setFaixa(termos[2].multiplicadores.Q3);
+        } else if (
+          valueInput > termos[2].taxa.Q3 &&
+          valueInput <= termos[2].taxa.Q4
+        ) {
+          setFaixa(termos[2].multiplicadores.Q4);
+        } else {
+          setFaixa(0);
         }
         break;
 
@@ -191,32 +149,80 @@ function openForm(){
     let transferidas = Math.round((calls * valueInput) / 100);
     setTransferred(transferidas);
   }
+
+
   function HandleInputIRC(event) {
     let valueInput = event.target.value;
     let irc = Math.round((calls * valueInput) / 100);
     setIrc(irc);
     switch (term) {
       case 1:
-        if (valueInput >= termos[0].taxaIRC.Q1 && valueInput < termos[0].taxaIRC.Q2) {
-      setDeflateIRC(termos[0].irc.Q1);
-    } else if (valueInput >= termos[0].taxaIRC.Q2 && valueInput < termos[0].taxaIRC.Q3) {
-      setDeflateIRC(termos[0].irc.Q2);
-    } else if (valueInput >= termos[0].taxaIRC.Q3) {
-      setDeflateIRC(termos[0].irc.Q3);
-    } else {
-      setDeflateIRC(0);
-    }
+        if (
+          valueInput >= termos[0].taxaIRC.Q1 &&
+          valueInput < termos[0].taxaIRC.Q2
+        ) {
+          setDeflateIRC(termos[0].irc.Q1 * 100);
+        } else if (
+          valueInput >= termos[0].taxaIRC.Q2 &&
+          valueInput < termos[0].taxaIRC.Q3
+        ) {
+          setDeflateIRC(termos[0].irc.Q2 * 100);
+        } else if (valueInput >= termos[0].taxaIRC.Q3) {
+          setDeflateIRC(termos[0].irc.Q3 * 100);
+        } else {
+          setDeflateIRC(0);
+        }
         break;
-    
+      case 2:
+        if (
+          valueInput >= termos[1].taxaIRC.Q1 &&
+          valueInput < termos[1].taxaIRC.Q2
+        ) {
+          setDeflateIRC(termos[1].irc.Q1);
+        } else if (
+          valueInput >= termos[1].taxaIRC.Q2 &&
+          valueInput < termos[1].taxaIRC.Q3
+        ) {
+          setDeflateIRC(termos[1].irc.Q2);
+        } else if (valueInput >= termos[1].taxaIRC.Q3) {
+          setDeflateIRC(termos[1].irc.Q3);
+        } else {
+          setDeflateIRC(0);
+        }
+        break;
+      case 3:
+        if (
+          valueInput >= termos[2].taxaIRC.Q1 &&
+          valueInput < termos[2].taxaIRC.Q2
+        ) {
+          setDeflateIRC(termos[2].irc.Q1);
+        } else if (
+          valueInput >= termos[2].taxaIRC.Q2 &&
+          valueInput < termos[2].taxaIRC.Q3
+        ) {
+          setDeflateIRC(termos[2].irc.Q2);
+        } else if (valueInput >= termos[2].taxaIRC.Q3) {
+          setDeflateIRC(termos[2].irc.Q3);
+        }
+        break;
       default:
+        setDeflateIRC(0);
         break;
     }
-    
   }
   function HandleInputTMA(event) {
+
     let value = Math.round(event.target.value);
-    value >= 650 ? setDeflateTMA(0.3) : setDeflateTMA(0);
     setTma(value);
+    if(term == 1 ){
+      value >= 650 ? setDeflateTMA(termos[1].deflateTMA) : setDeflateTMA(0);
+    }else if(term == 2){
+      value >= 620 ? setDeflateTMA(0.3*100) : setDeflateTMA(0);
+    }else{
+      value >= 650 ? setDeflateTMA(0.3*100) : setDeflateTMA(0);
+
+    }
+    console.log(value)
   }
   function HandleInputShortCall(event) {
     setShortCall(Math.round(event.target.value));
@@ -235,20 +241,20 @@ function openForm(){
       let deflatorIRC = deflateIRC * rendimento;
       let deflatorTMA = deflateTMA * rendimento;
       setProdutivas(produtivasReais);
+
       if (deflateIRC > 0 && deflateTMA > 0) {
         setRenda(rendimento - (deflatorIRC + deflatorTMA));
-      } else if (deflateIRC > 0 && deflateTMA < 0.3) {
+      } else if (deflateIRC > 0 && deflateTMA < 30) {
         setRenda(rendimento - deflatorIRC);
-      } else if (deflateIRC < 0.2 && deflateTMA > 0) {
+      } else if (deflateIRC < termos[0].irc.Q1 && deflateTMA > 0) {
         setRenda(rendimento - deflatorTMA);
       } else {
         setRenda(rendimento);
       }
     }
-   
+
     ProdutivasReais();
   }, [toggle]);
-
 
   return (
     <DataContext.Provider
