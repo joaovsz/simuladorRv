@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { createTheme,Button, TextField, ThemeProvider } from "@mui/material";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 import FormControl from '@mui/material/FormControl';
 import  Select  from "@mui/material/Select";
 import "./Input-forms.css";
@@ -38,43 +40,46 @@ export const InputForms = () => {
     },
   });
 if(!popOver){
-        return( 
-          <div className="home-select">
+  return( 
+    <div className="home-select">
+          <ThemeProvider theme={theme}>
           <h2>Selecione primeiro o termo que você assinou!</h2>
-          <FormControl sx={{ m: 1, maxWidth: 150, minWidth:150 }}>
-            
+          <div className="selectTerm">
+          <FormControl sx={{ m: 1, maxWidth: 150, minWidth:200 }}>
+
           <InputLabel id="demo-select-small">Termo de Pactuação</InputLabel>
           <Select
-            size="small"
+            size="large"
             labelId="demo-select-small"
             id="demo-select-small"
             value={term}
             onChange={selectTerms}
             label="Termo de Pactuação"
-          >
+            >
             <MenuItem value={0}>
-              <em>None</em>
+              <em>Selecionar</em>
             </MenuItem>
+            <MenuItem value={3}>OiTv Novato 04/2022</MenuItem>
             <MenuItem value={1}>OiTv Novato 05/2022</MenuItem>
             <MenuItem value={2}>OiTv Veterano 05/2022</MenuItem>
             {/* <MenuItem value={3}>OiTv Veterano 05/2022</MenuItem> */}
           </Select>
         </FormControl>
-        <ThemeProvider theme={theme}>
         <Button
             size="small"
-              style={{
-                borderRadius: 20,
-                fontFamily: "Poppins, 'sans-serif'",
-                fontWeight: "bold",
-              }}
-              className="button"
-              id="next"
-              variant="contained"
-              onClick={()=>openForm()}
+            style={{
+              borderRadius: 20,
+              fontFamily: "Poppins, 'sans-serif'",
+              fontWeight: "bold",
+            }}
+            className="button"
+            id="next"
+            variant="contained"
+            onClick={()=>openForm()}
             >
               Confirmar
             </Button>
+              </div>
             </ThemeProvider>
         </div>
         )
@@ -115,8 +120,7 @@ if(!popOver){
             onChange={HandleInputTransferred}
           />
           <TextField
-
-                      InputLabelProps={{ style: { fontFamily: "Poppins, 'sans-serif'" } }}
+            InputLabelProps={{ style: { fontFamily: "Poppins, 'sans-serif'" } }}
             size="small"
             style={{ marginBottom: 20 }}
             id="outlined-number"
@@ -126,8 +130,7 @@ if(!popOver){
 
           />
           <TextField
-
-                      InputLabelProps={{ style: { fontFamily: "Poppins, 'sans-serif'" } }}
+            InputLabelProps={{ style: { fontFamily: "Poppins, 'sans-serif'" } }}
             size="small"
             style={{ marginBottom: 20 }}
             id="outlined-number"
@@ -136,7 +139,7 @@ if(!popOver){
             onChange={HandleInputTMA}
           />
           <TextField
-                      InputLabelProps={{ style: { fontFamily: "Poppins, 'sans-serif'" } }}
+            InputLabelProps={{ style: { fontFamily: "Poppins, 'sans-serif'" } }}
             style={{ marginBottom: 20 }}
             size="small"
             id="outlined-number"
@@ -146,9 +149,7 @@ if(!popOver){
             onChange={HandleInputShortCall}
           />
           <TextField
-
-
-                      InputLabelProps={{ style: { fontFamily: "Poppins, 'sans-serif'" } }}
+            InputLabelProps={{ style: { fontFamily: "Poppins, 'sans-serif'" } }}
             size="small"
             style={{ marginBottom: 20 }}
             id="outlined-number"
@@ -164,12 +165,16 @@ if(!popOver){
                 borderRadius: 20,
                 fontFamily: "Poppins, 'sans-serif'",
                 fontWeight: "bold",
+                
               }}
               className="button"
               id="next"
               variant="text"
               onClick={() => resetTerm()}
-            >Mudar termo</Button>
+              startIcon={<ArrowBackIcon/>}
+            >
+          Voltar
+            </Button>
         
          
         
@@ -189,7 +194,7 @@ if(!popOver){
             </Button>
             <footer>
               <h4>
-                {renda<=0?"Sem RV este mês":`Renda Variável: ${renda.toFixed(2)}`
+                {renda<=0?"Sem RV este mês":`Renda Variável: R$ ${renda.toFixed(2)}`
                 }</h4>
             </footer>
           </div>
