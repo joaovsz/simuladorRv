@@ -63,7 +63,9 @@ span{
     text-align: left;
 }
 .developedBy{
-    padding: .5rem;
+    width:80%;
+    margin: auto;
+    padding: .5rem 0;
     text-align: center;
     
 }

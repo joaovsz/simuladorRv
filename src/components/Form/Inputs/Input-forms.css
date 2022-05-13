@@ -65,7 +65,6 @@ footer:hover{
 }
 
 #next{
-        
         height:3rem;
         padding:.6rem;    
         width:6rem;
@@ -73,10 +72,12 @@ footer:hover{
     }
 
 @media(max-width:768px){
+   
     #next{
+        justify-content: center;
         height:2rem;
         padding:.6rem;    
-        width:7rem;
+        width:6rem;
         margin-bottom: .5rem;
     }
     .Button{
@@ -94,6 +95,17 @@ footer:hover{
         position: relative;
            
     } 
+
+    .selectTerm{
+        flex-direction: column;
+    }
+
+    .home-select{
+
+        padding:1rem;
+        justify-content:space-between;
+    }
+    
 }
 
 

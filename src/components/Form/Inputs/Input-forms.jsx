@@ -171,7 +171,7 @@ if(!popOver){
               id="next"
               variant="text"
               onClick={() => resetTerm()}
-              startIcon={<ArrowBackIcon/>}
+              startIcon={<ArrowBackIcon style={{margin:0}}/>}
             >
           Voltar
             </Button>
