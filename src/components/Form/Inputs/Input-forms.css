@@ -18,8 +18,14 @@
     display: flex;
     align-items: center;
     justify-content:space-between;
-
     height:20%
+}
+
+.selectTerm{
+    display: flex;
+    align-items:center;
+    margin: auto;
+    justify-content:center;
 }
 
 footer{
@@ -31,13 +37,12 @@ footer{
         border-radius: 1rem;
         height:3rem;
         text-align:left;
-        position: relative;
-           
+        position: relative;  
     }  
 
 footer:hover{
     
-    background-color: #d8dddc;
+    background-color: #95c2b9;
     transition: all 2s ease-in-out;
 }    
 
@@ -60,9 +65,10 @@ footer:hover{
 }
 
 #next{
+        
         height:3rem;
         padding:.6rem;    
-        width:8rem;
+        width:6rem;
         
     }
 
