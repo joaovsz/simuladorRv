@@ -192,12 +192,12 @@ if(!popOver){
             >
               Calcular
             </Button>
+          </div>
             <footer>
               <h4>
                 {renda<=0?"Sem RV este mês":`Renda Variável: R$ ${renda.toFixed(2)}`
                 }</h4>
             </footer>
-          </div>
         </div>
         </ThemeProvider>
         </>)

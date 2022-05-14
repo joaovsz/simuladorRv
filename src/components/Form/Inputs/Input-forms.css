@@ -36,7 +36,9 @@ footer{
         align-items:center;
         border-radius: 1rem;
         height:3rem;
-        text-align:left;
+        width:16.8rem;
+        margin: auto;
+        text-align:center;
         position: relative;  
     }  
 
@@ -82,28 +84,34 @@ footer:hover{
     }
     .Button{
         align-items: center;
-        
-        flex-direction:column;
+        padding:.5rem 0;
     }
     footer{
-        
+        margin: auto;
+        width:14rem;
         padding: 1rem; 
         align-items:center;
          border-radius:2rem ;
-        height:2rem;
+        height:3rem;
         text-align:left;
         position: relative;
            
     } 
 
     .selectTerm{
+        margin: 0;
+        height:50%;
+        justify-content:space-evenly;
         flex-direction: column;
     }
 
     .home-select{
-
+        display: flex;
+        flex-direction: column;
+        
+        height: 46vh;
         padding:1rem;
-        justify-content:space-between;
+        justify-content:center;
     }
     
 }

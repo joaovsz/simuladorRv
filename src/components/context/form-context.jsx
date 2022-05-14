@@ -222,7 +222,7 @@ export function TableProvider(props) {
       value >= 650 ? setDeflateTMA(30) : setDeflateTMA(0);
 
     }
-    console.log(value)
+    
   }
   function HandleInputShortCall(event) {
     setShortCall(Math.round(event.target.value));
