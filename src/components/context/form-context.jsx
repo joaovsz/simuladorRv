@@ -51,7 +51,6 @@ export function TableProvider(props) {
       transferred == 0 ||
       irc == 0 ||
       tma == 0 ||
-      shortCall == 0 ||
       resolution == 0
     ) {
       alert("Preencha todos os campos corretamente");
