@@ -18,7 +18,7 @@ export function TableProvider(props) {
   const [deflateTMA, setDeflateTMA] = useState(0);
   const [term, setTerm] = useState(0);
   const [popOver, setPopOver] = useState(false);
-
+ 
   function openForm() {
     term == 0 ? alert("Selecione o termo") : setPopOver(true), setTerm(term);
   }
@@ -35,7 +35,7 @@ export function TableProvider(props) {
     setProdutivas(0);
     setFaixa(0);
     setPopOver(!popOver);
-    setTerm(null);
+    setTerm(0);
   }
 
   function selectTerms(event) {
@@ -71,23 +71,23 @@ export function TableProvider(props) {
 
     switch (term) {
       case 1:
-        if (valueInput > 0 && valueInput <= termos[0].taxa.Q1) {
-          setFaixa(termos[0].multiplicadores.Q1);
+        if (valueInput > 0 && valueInput <= termos[2].taxa.Q1) {
+          setFaixa(termos[2].multiplicadores.Q1);
         } else if (
-          valueInput > termos[0].taxa.Q1 &&
-          valueInput <= termos[0].taxa.Q2
+          valueInput > termos[2].taxa.Q1 &&
+          valueInput <= termos[2].taxa.Q2
         ) {
-          setFaixa(termos[0].multiplicadores.Q2);
+          setFaixa(termos[2].multiplicadores.Q2);
         } else if (
-          valueInput > termos[0].taxa.Q2 &&
-          valueInput <= termos[0].taxa.Q3
+          valueInput > termos[2].taxa.Q2 &&
+          valueInput <= termos[2].taxa.Q3
         ) {
-          setFaixa(termos[0].multiplicadores.Q3);
+          setFaixa(termos[2].multiplicadores.Q3);
         } else if (
-          valueInput > termos[0].taxa.Q3 &&
-          valueInput <= termos[0].taxa.Q4
+          valueInput > termos[2].taxa.Q3 &&
+          valueInput <= termos[2].taxa.Q4
         ) {
-          setFaixa(termos[0].multiplicadores.Q4);
+          setFaixa(termos[2].multiplicadores.Q4);
         } else {
           setFaixa(0);
         }
@@ -115,23 +115,22 @@ export function TableProvider(props) {
         }
         break;
       case 3:
-        if (valueInput > 0 && valueInput <= termos[2].taxa.Q1) {
-          setFaixa(termos[2].multiplicadores.Q1);
+        if (valueInput > 0 && valueInput <= termos[0].taxa.Q1) {
+          setFaixa(termos[0].multiplicadores.Q1);
         } else if (
-          valueInput > termos[2].taxa.Q1 &&
-          valueInput <= termos[2].taxa.Q2
+          valueInput > termos[0].taxa.Q1 &&
+          valueInput <= termos[0].taxa.Q2
         ) {
-          setFaixa(termos[2].multiplicadores.Q2);
+          setFaixa(termos[0].multiplicadores.Q2);
         } else if (
-          valueInput > termos[2].taxa.Q2 &&
-          valueInput <= termos[2].taxa.Q3
+          valueInput > termos[0].taxa.Q2 &&
+          valueInput <= termos[0].taxa.Q3
         ) {
-          setFaixa(termos[2].multiplicadores.Q3);
+          setFaixa(termos[0].multiplicadores.Q3);
         } else if (
-          valueInput > termos[2].taxa.Q3 &&
-          valueInput <= termos[2].taxa.Q4
+          valueInput > termos[0].taxa.Q3
         ) {
-          setFaixa(termos[2].multiplicadores.Q4);
+          setFaixa(termos[0].multiplicadores.Q4);
         } else {
           setFaixa(0);
         }
@@ -157,17 +156,17 @@ export function TableProvider(props) {
     switch (term) {
       case 1:
         if (
-          valueInput >= termos[0].taxaIRC.Q1 &&
-          valueInput < termos[0].taxaIRC.Q2
+          valueInput >= termos[2].taxaIRC.Q1 &&
+          valueInput < termos[2].taxaIRC.Q2
         ) {
-          setDeflateIRC(termos[0].irc.Q1 * 100);
+          setDeflateIRC(termos[2].irc.Q1);
         } else if (
-          valueInput >= termos[0].taxaIRC.Q2 &&
-          valueInput < termos[0].taxaIRC.Q3
+          valueInput >= termos[2].taxaIRC.Q2 &&
+          valueInput < termos[2].taxaIRC.Q3
         ) {
-          setDeflateIRC(termos[0].irc.Q2 * 100);
+          setDeflateIRC(termos[2].irc.Q2 );
         } else if (valueInput >= termos[0].taxaIRC.Q3) {
-          setDeflateIRC(termos[0].irc.Q3 * 100);
+          setDeflateIRC(termos[2].irc.Q3 );
         } else {
           setDeflateIRC(0);
         }
@@ -191,17 +190,17 @@ export function TableProvider(props) {
         break;
       case 3:
         if (
-          valueInput >= termos[2].taxaIRC.Q1 &&
-          valueInput < termos[2].taxaIRC.Q2
+          valueInput >= termos[0].taxaIRC.Q1 &&
+          valueInput < termos[0].taxaIRC.Q2
         ) {
-          setDeflateIRC(termos[2].irc.Q1);
+          setDeflateIRC(termos[0].irc.Q1);
         } else if (
-          valueInput >= termos[2].taxaIRC.Q2 &&
-          valueInput < termos[2].taxaIRC.Q3
+          valueInput >= termos[0].taxaIRC.Q2
         ) {
-          setDeflateIRC(termos[2].irc.Q2);
-        } else if (valueInput >= termos[2].taxaIRC.Q3) {
-          setDeflateIRC(termos[2].irc.Q3);
+          setDeflateIRC(termos[0].irc.Q2);
+        } else{
+          setDeflateIRC(0);
+
         }
         break;
       default:
@@ -217,8 +216,8 @@ export function TableProvider(props) {
       value >= 650 ? setDeflateTMA(30) : setDeflateTMA(0);
     }else if(term == 2){
       value >= 620 ? setDeflateTMA(30) : setDeflateTMA(0);
-    }else{
-      value >= 650 ? setDeflateTMA(30) : setDeflateTMA(0);
+    }else if(term==3){
+      value >= 1000 ? setDeflateTMA(1000) : setDeflateTMA(0);
 
     }
     
@@ -231,14 +230,14 @@ export function TableProvider(props) {
   }
 
   useEffect(() => {
-    function ProdutivasReais() {
+    function ProdutivasReaisTv() {
       let retiradas = Math.round(
         calls - canceled - transferred - irc - shortCall
       );
       let produtivasReais = Math.round((retiradas * resolution) / 100);
       let rendimento = Math.round(produtivasReais * faixa);
       let deflatorIRC = deflateIRC * rendimento;
-      let deflatorTMA = ((deflateTMA * rendimento)/100);
+      let deflatorTMA = (deflateTMA * rendimento) / 100;
       setProdutivas(produtivasReais);
 
       if (deflateIRC > 0 && deflateTMA > 0) {
@@ -252,8 +251,36 @@ export function TableProvider(props) {
       }
     }
 
-    ProdutivasReais();
+    function ProdutivasReaisFibra(){
+      let retiradas = Math.round(calls - canceled - transferred - shortCall)
+      let produtivasReais = Math.round((retiradas * resolution)/100)
+      let rendimento = Math.round(produtivasReais * faixa)
+      let deflatorIRC = deflateIRC * rendimento
+      let deflatorTMA = ((deflateTMA * rendimento)/100)
+      
+      setProdutivas(produtivasReais)
+
+      if (deflateIRC > 0 && deflateTMA > 0) {
+        setRenda(rendimento - (deflatorIRC + deflatorTMA));
+      } else if (deflateIRC > 0 && deflateTMA < 100) {
+        setRenda(rendimento - deflatorIRC);
+      } else if (deflateIRC < termos[0].irc.Q1 && deflateTMA > 0) {
+        setRenda(rendimento - deflatorTMA);
+      } else {
+        setRenda(rendimento);
+      }
+
+    }
+
+    if(term == 1 || term == 2) {
+      ProdutivasReaisTv();
+    } else{
+      ProdutivasReaisFibra()
+    }
+
+
   }, [toggle]);
+
 
   return (
     <DataContext.Provider
@@ -279,6 +306,7 @@ export function TableProvider(props) {
         HandleInputCancel,
         HandleInputCalls,
         selectTerms,
+        
       }}
     >
       {props.children}

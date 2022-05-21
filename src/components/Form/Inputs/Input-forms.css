@@ -21,12 +21,18 @@
     height:20%
 }
 
+.MuiTouchRipple-root{
+    width: 100%;
+}
+
 .selectTerm{
     display: flex;
     align-items:center;
     margin: auto;
     justify-content:center;
 }
+
+
 
 footer{
         color:var(--bg-violet);

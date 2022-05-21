@@ -8,6 +8,7 @@ import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import MoneyOffIcon from "@mui/icons-material/MoneyOff";
 
 import "./Dados.css";
+import { Switch } from "@mui/material";
 
 export const Dados = () => {
   const {
@@ -78,7 +79,7 @@ export const Dados = () => {
               
             Deflação:
               </span>
-            { ((deflateIRC*100)+(deflateTMA))>100?" Ta devendo pra empresa já em lllkkkk":
+            { ((deflateIRC)+(deflateTMA))>100?" Ta devendo pra empresa já em lllkkkk":
               deflateIRC < 0.2 && deflateTMA < 0.3
               ? " 0%"
               : deflateIRC > 0 && deflateTMA > 0
@@ -88,6 +89,7 @@ export const Dados = () => {
               : ` ${deflateTMA}% (TMA)`}
             <MoneyOffIcon />
           </div>
+          
         </section>
       </div>
         <div className="developedBy">
