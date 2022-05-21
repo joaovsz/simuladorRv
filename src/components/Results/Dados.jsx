@@ -24,12 +24,12 @@ export const Dados = () => {
     <div id="results">
       <div className="results-group">
         <section id="description">
-          <h1>Como foi feito o cálculo?</h1>
+          <h1>Como é feito o cálculo?</h1>
           <p>
             O cálculo da renda váriavel é feita a partir da multiplicação das
             suas chamadas produtivas reais pela porcentagem(%) de cancelamento,
-            sendo considerando 4 tipos de multiplicadores que vão de acordo com
-            a taxa
+            sendo considerado 4 tipos de multiplicadores que vão de acordo com
+            a faixa.
           </p>
         </section>
         <section id="dados">
