@@ -6,9 +6,7 @@ import AddIcCallIcon from "@mui/icons-material/AddIcCall";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import MoneyOffIcon from "@mui/icons-material/MoneyOff";
-
 import "./Dados.css";
-import { Switch } from "@mui/material";
 
 export const Dados = () => {
   const {
@@ -79,9 +77,9 @@ export const Dados = () => {
               
             Deflação:
               </span>
-            { ((deflateIRC)+(deflateTMA))>100?" Ta devendo pra empresa já em lllkkkk":
+            { (deflateIRC+deflateTMA)>100?"Está devendo a operadora kkkk":
               deflateIRC < 0.2 && deflateTMA < 0.3
-              ? " 0%"
+              ? "0%"
               : deflateIRC > 0 && deflateTMA > 0
               ? ` ${((deflateIRC*100) + deflateTMA)}% (IRC e TMA)`
               : deflateIRC > 0 && deflateTMA < 0.3

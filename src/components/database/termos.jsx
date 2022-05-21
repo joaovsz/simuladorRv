@@ -62,9 +62,9 @@ export const termos = [
 
     taxa: {
       Q1: 15.4,
-      Q2: 17.6,
-      Q3: 19.8,
-      Q4: 25.85,
+      Q2: 18.15,
+      Q3: 20.90,
+      Q4: 23.65,
     },
 
     multiplicadores: {
@@ -75,9 +75,9 @@ export const termos = [
     },
 
     taxaIRC: {
-      Q1: 15.95,
-      Q2: 17.05,
-      Q3: 18.15,
+      Q1: 13.75,
+      Q2: 14.85,
+      Q3: 15.95,
     },
     irc: {
       Q1: 0.2,

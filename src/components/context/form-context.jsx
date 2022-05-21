@@ -165,7 +165,7 @@ export function TableProvider(props) {
           valueInput < termos[2].taxaIRC.Q3
         ) {
           setDeflateIRC(termos[2].irc.Q2 );
-        } else if (valueInput >= termos[0].taxaIRC.Q3) {
+        } else if (valueInput >= termos[2].taxaIRC.Q3) {
           setDeflateIRC(termos[2].irc.Q3 );
         } else {
           setDeflateIRC(0);
