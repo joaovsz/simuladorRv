@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
-import {termos} from "../database/termos"
- export const DataContext = createContext();
+import { termos } from "../database/termos";
+export const DataContext = createContext();
 
 export function TableProvider(props) {
   const [toggle, setToggle] = useState(false);
@@ -18,7 +18,7 @@ export function TableProvider(props) {
   const [deflateTMA, setDeflateTMA] = useState(0);
   const [term, setTerm] = useState(0);
   const [popOver, setPopOver] = useState(false);
- 
+
   function openForm() {
     term == 0 ? alert("Selecione o termo") : setPopOver(true), setTerm(term);
   }
@@ -42,8 +42,6 @@ export function TableProvider(props) {
     setTerm(event.target.value);
   }
 
-  
-
   function Calcular() {
     if (
       calls == 0 ||
@@ -66,9 +64,10 @@ export function TableProvider(props) {
 
   function HandleInputCancel(event) {
     let valueInput = event.target.value;
-    let canceladas = Math.round((calls * valueInput) / 100);
+    let retiradasIMP = calls - transferred - irc - shortCall;
+    let canceladas = Math.round((retiradasIMP * valueInput) / 100);
     setCancel(canceladas);
-
+    console.log(retiradasIMP);
     switch (term) {
       case 1:
         if (valueInput > 0 && valueInput <= termos[2].taxa.Q1) {
@@ -127,9 +126,7 @@ export function TableProvider(props) {
           valueInput <= termos[0].taxa.Q3
         ) {
           setFaixa(termos[0].multiplicadores.Q3);
-        } else if (
-          valueInput > termos[0].taxa.Q3
-        ) {
+        } else if (valueInput > termos[0].taxa.Q3) {
           setFaixa(termos[0].multiplicadores.Q4);
         } else {
           setFaixa(0);
@@ -148,7 +145,6 @@ export function TableProvider(props) {
     setTransferred(transferidas);
   }
 
-
   function HandleInputIRC(event) {
     let valueInput = event.target.value;
     let irc = Math.round((calls * valueInput) / 100);
@@ -164,9 +160,9 @@ export function TableProvider(props) {
           valueInput >= termos[2].taxaIRC.Q2 &&
           valueInput < termos[2].taxaIRC.Q3
         ) {
-          setDeflateIRC(termos[2].irc.Q2 );
+          setDeflateIRC(termos[2].irc.Q2);
         } else if (valueInput >= termos[2].taxaIRC.Q3) {
-          setDeflateIRC(termos[2].irc.Q3 );
+          setDeflateIRC(termos[2].irc.Q3);
         } else {
           setDeflateIRC(0);
         }
@@ -194,13 +190,10 @@ export function TableProvider(props) {
           valueInput < termos[0].taxaIRC.Q2
         ) {
           setDeflateIRC(termos[0].irc.Q1);
-        } else if (
-          valueInput >= termos[0].taxaIRC.Q2
-        ) {
+        } else if (valueInput >= termos[0].taxaIRC.Q2) {
           setDeflateIRC(termos[0].irc.Q2);
-        } else{
+        } else {
           setDeflateIRC(0);
-
         }
         break;
       default:
@@ -209,18 +202,15 @@ export function TableProvider(props) {
     }
   }
   function HandleInputTMA(event) {
-
     let value = Math.round(event.target.value);
     setTma(value);
-    if(term == 1 ){
+    if (term == 1) {
       value >= 650 ? setDeflateTMA(30) : setDeflateTMA(0);
-    }else if(term == 2){
+    } else if (term == 2) {
       value >= 620 ? setDeflateTMA(30) : setDeflateTMA(0);
-    }else if(term==3){
+    } else if (term == 3) {
       value >= 1000 ? setDeflateTMA(1000) : setDeflateTMA(0);
-
     }
-    
   }
   function HandleInputShortCall(event) {
     setShortCall(Math.round(event.target.value));
@@ -251,14 +241,14 @@ export function TableProvider(props) {
       }
     }
 
-    function ProdutivasReaisFibra(){
-      let retiradas = Math.round(calls - canceled - transferred - shortCall)
-      let produtivasReais = Math.round((retiradas * resolution)/100)
-      let rendimento = Math.round(produtivasReais * faixa)
-      let deflatorIRC = deflateIRC * rendimento
-      let deflatorTMA = ((deflateTMA * rendimento)/100)
-      
-      setProdutivas(produtivasReais)
+    function ProdutivasReaisFibra() {
+      let retiradas = Math.round(calls - canceled - transferred - shortCall);
+      let produtivasReais = Math.round((retiradas * resolution) / 100);
+      let rendimento = Math.round(produtivasReais * faixa);
+      let deflatorIRC = deflateIRC * rendimento;
+      let deflatorTMA = (deflateTMA * rendimento) / 100;
+
+      setProdutivas(produtivasReais);
 
       if (deflateIRC > 0 && deflateTMA > 0) {
         setRenda(rendimento - (deflatorIRC + deflatorTMA));
@@ -269,18 +259,14 @@ export function TableProvider(props) {
       } else {
         setRenda(rendimento);
       }
-
     }
 
-    if(term == 1 || term == 2) {
+    if (term == 1 || term == 2) {
       ProdutivasReaisTv();
-    } else{
-      ProdutivasReaisFibra()
+    } else {
+      ProdutivasReaisFibra();
     }
-
-
   }, [toggle]);
-
 
   return (
     <DataContext.Provider
@@ -306,7 +292,6 @@ export function TableProvider(props) {
         HandleInputCancel,
         HandleInputCalls,
         selectTerms,
-        
       }}
     >
       {props.children}

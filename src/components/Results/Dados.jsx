@@ -11,7 +11,6 @@ import "./Dados.css";
 export const Dados = () => {
   const {
     faixa,
-    renda,
     produtivas,
     irc,
     transferred,
@@ -28,71 +27,61 @@ export const Dados = () => {
           <p>
             O cálculo da renda váriavel é feita a partir da multiplicação das
             suas chamadas produtivas reais pela porcentagem(%) de cancelamento,
-            sendo considerado 4 tipos de multiplicadores que vão de acordo com
-            a faixa.
+            sendo considerado 4 tipos de multiplicadores que vão de acordo com a
+            faixa.
           </p>
         </section>
         <section id="dados">
           <div className="table-results">
-            <span>
-            Multiplicador: 
-            </span>
+            <span>Multiplicador:</span>
             R${faixa}
             <AttachMoneyIcon />
           </div>
           <div className="table-results">
-            <span>
-
-            Produtivas Reais: 
-            </span>
-            {produtivas} 
+            <span>Produtivas Reais:</span>
+            {produtivas}
             <AddIcCallIcon />
           </div>
           <div className="table-results">
-          <span>
-            Ligaram de volta: 
-              </span>
-            {irc} 
+            <span>Ligaram de volta:</span>
+            {irc}
             <PhoneCallbackIcon />
           </div>
           <div className="table-results">
-          <span>
-              
-            Total de transferidos: 
-              </span>
+            <span>Total de transferidos:</span>
             {transferred}
             <CompareArrowsIcon />
           </div>
           <div className="table-results">
-          <span>
-              
-            Cancelados: 
-              </span>
+            <span>Cancelados:</span>
             {canceled}
             <RemoveCircleOutlineIcon />
           </div>
 
           <div className="table-results">
-          <span>
-              
-            Deflação:
-              </span>
-            { (deflateIRC+deflateTMA)>100?"Está devendo a operadora kkkk":
-              deflateIRC < 0.2 && deflateTMA < 0.3
+            <span>Deflação:</span>
+            {deflateIRC + deflateTMA > 100
+              ? "Está devendo a operadora kkkk"
+              : deflateIRC < 0.2 && deflateTMA < 0.3
               ? "0%"
               : deflateIRC > 0 && deflateTMA > 0
-              ? ` ${((deflateIRC*100) + deflateTMA)}% (IRC e TMA)`
+              ? ` ${deflateIRC * 100 + deflateTMA}% (IRC e TMA)`
               : deflateIRC > 0 && deflateTMA < 0.3
-              ? ` ${deflateIRC*100}%(IRC)`
+              ? ` ${deflateIRC * 100}%(IRC)`
               : ` ${deflateTMA}% (TMA)`}
             <MoneyOffIcon />
           </div>
-          
         </section>
       </div>
-        <div className="developedBy">
-          <p>Desenvolvido por <a href="https://instagram.com/joao.vsz" target="_blank"> @joaovsz</a></p>
-        </div>
+      <div className="developedBy">
+        <p>
+          Desenvolvido por{" "}
+          <a href="https://instagram.com/joao.vsz" target="_blank">
+            {" "}
+            @joaovsz
+          </a>
+        </p>
+      </div>
     </div>
   );
 };
