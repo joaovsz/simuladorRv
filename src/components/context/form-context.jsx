@@ -190,8 +190,11 @@ export function TableProvider(props) {
           valueInput < termos[0].taxaIRC.Q2
         ) {
           setDeflateIRC(termos[0].irc.Q1);
-        } else if (valueInput >= termos[0].taxaIRC.Q2) {
+        } else if (valueInput >= termos[0].taxaIRC.Q2 &&
+          valueInput < termos[0].taxaIRC.Q3) {
           setDeflateIRC(termos[0].irc.Q2);
+        } else if (valueInput >= termos[0].taxaIRC.Q3) {
+          setDeflateIRC(termos[0].irc.Q3);
         } else {
           setDeflateIRC(0);
         }
@@ -209,7 +212,7 @@ export function TableProvider(props) {
     } else if (term == 2) {
       value >= 620 ? setDeflateTMA(30) : setDeflateTMA(0);
     } else if (term == 3) {
-      value >= 1000 ? setDeflateTMA(1000) : setDeflateTMA(0);
+      value > 100000 ? setDeflateTMA(1000) : setDeflateTMA(0);
     }
   }
   function HandleInputShortCall(event) {

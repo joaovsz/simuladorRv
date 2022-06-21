@@ -49,8 +49,8 @@ footer{
     }  
 
 footer:hover{
-    
-    background-color: #95c2b9;
+    color:white;
+    background-color: #008f1f;
     transition: all 2s ease-in-out;
 }    
 

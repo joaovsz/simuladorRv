@@ -1,29 +1,35 @@
 export const termos = [
   {
-    name: "Oi Fibra Empresarial 05/2022",
+    name: "OiTv Veterano 06/2022",
+
     taxa: {
-      Q1: 18,
-      Q2: 20,
-      Q3: 24.5,
+      Q1: 14,
+      Q2: 15.5,
+      Q3: 17.5,
+      Q4: 21,
     },
+
     multiplicadores: {
-      Q1: 5,
-      Q2: 4.5,
-      Q3: 2.5,
-      Q4: 2,
+      Q1: 2,
+      Q2: 1.25,
+      Q3: 1,
+      Q4: 0.75,
     },
+
     taxaIRC: {
-      Q1: 19,
-      Q2: 21.5,
+      Q1: 13.5,
+      Q2: 14.5,
+      Q3: 15.44,
     },
     irc: {
-      Q1: 0.5,
-      Q2: 0.9,
+      Q1: 0.2,
+      Q2: 0.5,
+      Q3: 0.9,
     },
     tma: {
-      Q1: 1000,
+      Q1: 600,
     },
-    deflateTma: 100,
+    deflateTma: 0,
   },
   {
     name: "OiTv Veterano 05/2022",
