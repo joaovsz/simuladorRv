@@ -36,6 +36,8 @@ export function TableProvider(props) {
     setFaixa(0);
     setPopOver(!popOver);
     setTerm(0);
+    setDeflateIRC(0)
+    setDeflateTMA(0)
   }
 
   function selectTerms(event) {
