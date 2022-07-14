@@ -209,13 +209,13 @@ export function TableProvider(props) {
   function HandleInputTMA(event) {
     let value = Math.round(event.target.value);
     setTma(value);
-    if (term == 1) {
-      value >= 650 ? setDeflateTMA(30) : setDeflateTMA(0);
-    } else if (term == 2) {
-      value >= 620 ? setDeflateTMA(30) : setDeflateTMA(0);
-    } else if (term == 3) {
-      value > 100000 ? setDeflateTMA(1000) : setDeflateTMA(0);
-    }
+    // if (term == 1) {
+    //   value >= 650 ? setDeflateTMA(30) : setDeflateTMA(0);
+    // } else if (term == 2) {
+    //   value >= 620 ? setDeflateTMA(30) : setDeflateTMA(0);
+    // } else if (term == 3) {
+    //   value > 100000 ? setDeflateTMA(1000) : setDeflateTMA(0);
+    // }
   }
   function HandleInputShortCall(event) {
     setShortCall(Math.round(event.target.value));
