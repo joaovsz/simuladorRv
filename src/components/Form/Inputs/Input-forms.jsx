@@ -122,7 +122,7 @@ export const InputForms = () => {
               type="number"
               onChange={HandleInputIRC}
             />
-            <TextField
+            {/* <TextField
               InputLabelProps={{
                 style: { fontFamily: "Poppins, 'sans-serif'" },
               }}
@@ -132,7 +132,7 @@ export const InputForms = () => {
               label="ShortCall"
               type="number"
               onChange={HandleInputShortCall}
-            />
+            /> */}
             <TextField
               size="small"
               style={{ marginBottom: 20 }}
