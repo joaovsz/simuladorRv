@@ -9,7 +9,7 @@ export function TableProvider(props) {
   const [transferred, setTransferred] = useState(0);
   const [irc, setIrc] = useState(0);
   const [tma, setTma] = useState(0);
-  const [shortCall, setShortCall] = useState(0);
+  // const [shortCall, setShortCall] = useState(0);
   const [resolution, setResolution] = useState(0);
   const [produtivas, setProdutivas] = useState(0);
   const [renda, setRenda] = useState(0);
@@ -30,7 +30,7 @@ export function TableProvider(props) {
     setIrc(0);
     setRenda(0);
     setTma(0);
-    setShortCall(0);
+    // setShortCall(0);
     setResolution(0);
     setProdutivas(0);
     setFaixa(0);
@@ -66,10 +66,10 @@ export function TableProvider(props) {
 
   function HandleInputCancel(event) {
     let valueInput = event.target.value;
-    let retiradasIMP = calls - transferred - irc - shortCall;
+    let retiradasIMP = calls - transferred - irc;
     let canceladas = Math.round((retiradasIMP * valueInput) / 100);
-    setCancel(canceladas);
-    console.log(retiradasIMP);
+    setCancel(canceladas); 
+    console.log("Inprodutivas", retiradasIMP, "Canceladas", canceladas);
     switch (term) {
       case 1:
         if (valueInput > 0 && valueInput <= termos[2].taxa.Q1) {
@@ -209,17 +209,10 @@ export function TableProvider(props) {
   function HandleInputTMA(event) {
     let value = Math.round(event.target.value);
     setTma(value);
-    // if (term == 1) {
-    //   value >= 650 ? setDeflateTMA(30) : setDeflateTMA(0);
-    // } else if (term == 2) {
-    //   value >= 620 ? setDeflateTMA(30) : setDeflateTMA(0);
-    // } else if (term == 3) {
-    //   value > 100000 ? setDeflateTMA(1000) : setDeflateTMA(0);
-    // }
   }
-  function HandleInputShortCall(event) {
-    setShortCall(Math.round(event.target.value));
-  }
+  // function HandleInputShortCall(event) {
+  //   setShortCall(Math.round(event.target.value));
+  // }
   function HandleInputResolution(event) {
     setResolution(Math.round(event.target.value));
   }
@@ -227,14 +220,14 @@ export function TableProvider(props) {
   useEffect(() => {
     function ProdutivasReaisTv() {
       let retiradas = Math.round(
-        calls - canceled - transferred - irc - shortCall
+        calls - canceled - transferred - irc
       );
+      console.log(retiradas)
       let produtivasReais = Math.round((retiradas * resolution) / 100);
       let rendimento = Math.round(produtivasReais * faixa);
       let deflatorIRC = deflateIRC * rendimento;
       let deflatorTMA = (deflateTMA * rendimento) / 100;
       setProdutivas(produtivasReais);
-
       if (deflateIRC > 0 && deflateTMA > 0) {
         setRenda(rendimento - (deflatorIRC + deflatorTMA));
       } else if (deflateIRC > 0 && deflateTMA < 30) {
@@ -245,32 +238,7 @@ export function TableProvider(props) {
         setRenda(rendimento);
       }
     }
-
-    function ProdutivasReaisFibra() {
-      let retiradas = Math.round(calls - canceled - transferred - shortCall);
-      let produtivasReais = Math.round((retiradas * resolution) / 100);
-      let rendimento = Math.round(produtivasReais * faixa);
-      let deflatorIRC = deflateIRC * rendimento;
-      let deflatorTMA = (deflateTMA * rendimento) / 100;
-
-      setProdutivas(produtivasReais);
-
-      if (deflateIRC > 0 && deflateTMA > 0) {
-        setRenda(rendimento - (deflatorIRC + deflatorTMA));
-      } else if (deflateIRC > 0 && deflateTMA < 100) {
-        setRenda(rendimento - deflatorIRC);
-      } else if (deflateIRC < termos[0].irc.Q1 && deflateTMA > 0) {
-        setRenda(rendimento - deflatorTMA);
-      } else {
-        setRenda(rendimento);
-      }
-    }
-
-    if (term == 1 || term == 2) {
-      ProdutivasReaisTv();
-    } else {
-      ProdutivasReaisFibra();
-    }
+    ProdutivasReaisTv()
   }, [toggle]);
 
   return (
@@ -290,7 +258,7 @@ export function TableProvider(props) {
         resetTerm,
         Calcular,
         HandleInputResolution,
-        HandleInputShortCall,
+        // HandleInputShortCall,
         HandleInputIRC,
         HandleInputTMA,
         HandleInputTransferred,
