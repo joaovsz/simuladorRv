@@ -71,28 +71,6 @@ export function TableProvider(props) {
     setCancel(canceladas); 
     console.log("Inprodutivas", retiradasIMP, "Canceladas", canceladas);
     switch (term) {
-      case 1:
-        if (valueInput > 0 && valueInput <= termos[2].taxa.Q1) {
-          setFaixa(termos[2].multiplicadores.Q1);
-        } else if (
-          valueInput > termos[2].taxa.Q1 &&
-          valueInput <= termos[2].taxa.Q2
-        ) {
-          setFaixa(termos[2].multiplicadores.Q2);
-        } else if (
-          valueInput > termos[2].taxa.Q2 &&
-          valueInput <= termos[2].taxa.Q3
-        ) {
-          setFaixa(termos[2].multiplicadores.Q3);
-        } else if (
-          valueInput > termos[2].taxa.Q3 &&
-          valueInput <= termos[2].taxa.Q4
-        ) {
-          setFaixa(termos[2].multiplicadores.Q4);
-        } else {
-          setFaixa(0);
-        }
-        break;
       case 2:
         if (valueInput > 0 && valueInput <= termos[1].taxa.Q1) {
           setFaixa(termos[1].multiplicadores.Q1);
