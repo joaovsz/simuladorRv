@@ -154,12 +154,9 @@ export function TableProvider(props) {
         ) {
           setDeflateIRC(termos[1].irc.Q1);
         } else if (
-          valueInput >= termos[1].taxaIRC.Q2 &&
-          valueInput < termos[1].taxaIRC.Q3
+          valueInput >= termos[1].taxaIRC.Q2
         ) {
           setDeflateIRC(termos[1].irc.Q2);
-        } else if (valueInput >= termos[1].taxaIRC.Q3) {
-          setDeflateIRC(termos[1].irc.Q3);
         } else {
           setDeflateIRC(0);
         }
