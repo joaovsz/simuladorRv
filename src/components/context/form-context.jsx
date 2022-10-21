@@ -167,12 +167,13 @@ export function TableProvider(props) {
           valueInput < termos[0].taxaIRC.Q2
         ) {
           setDeflateIRC(termos[0].irc.Q1);
-        } else if (valueInput >= termos[0].taxaIRC.Q2 &&
-          valueInput < termos[0].taxaIRC.Q3) {
+        } else if (valueInput >= termos[0].taxaIRC.Q2) {
           setDeflateIRC(termos[0].irc.Q2);
-        } else if (valueInput >= termos[0].taxaIRC.Q3) {
-          setDeflateIRC(termos[0].irc.Q3);
-        } else {
+        }
+        // } else if (valueInput >= termos[0].taxaIRC.Q3) {
+        //   setDeflateIRC(termos[0].irc.Q3);
+        // } 
+          else {
           setDeflateIRC(0);
         }
         break;
