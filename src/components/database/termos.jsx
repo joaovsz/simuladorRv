@@ -30,17 +30,17 @@ export const termos = [
     deflateTma: 0,
   },
   {
-    name: "OiTv Veterano 09/2022",
+    name: "OiTv Veterano 11/2022",
 
     taxa: {
-      Q1: 14.5,
+      Q1: 14,
       Q2: 15.5,
       Q3: 17.5,
       Q4: 21.49,
     },
 
     multiplicadores: {
-      Q1: 3,
+      Q1: 2.5,
       Q2: 2,
       Q3: 1.5,
       Q4: 1,

@@ -57,8 +57,8 @@ export const InputForms = () => {
                 <MenuItem value={0}>
                   <em>Selecionar</em>
                 </MenuItem>
+                <MenuItem value={2}>OiTv Veterano 11/2022</MenuItem>
                 <MenuItem value={3}>OiTv Veterano 10/2022</MenuItem>
-                <MenuItem value={2}>OiTv Veterano 09/2022</MenuItem>
                 
                
               </Select>
