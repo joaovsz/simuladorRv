@@ -33,16 +33,16 @@ export const termos = [
     name: "OiTv Veterano 12/2022",
 
     taxa: {
-      Q1: 12,
-      Q2: 13,
-      Q3: 15.5,
-      Q4: 20.49,
+      Q1: 12.9,
+      Q2: 15.9,
+      Q3: 20.9,
+      Q4: 26.9,
     },
 
     multiplicadores: {
-      Q1: 2.5,
-      Q2: 2,
-      Q3: 1.5,
+      Q1: 2.3,
+      Q2: 1.8,
+      Q3: 1.3,
       Q4: 1,
     },
 
